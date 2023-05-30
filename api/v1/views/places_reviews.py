@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" View for Review objects that handles default API actions """
+""" View for Review objects """
 from api.v1.views import app_views
 from flask import jsonify, abort, make_response, request
 from models import storage
@@ -10,7 +10,7 @@ from models.review import Review
 @app_views.route('/places/<place_id>/reviews', methods=['GET'],
                  strict_slashes=False)
 def reviews(place_id):
-    """ Retrieves the list of all Review objects """
+    """ Retrieves all Review objects """
     place = storage.get("Place", place_id)
     if not place:
         abort(404)
@@ -19,7 +19,7 @@ def reviews(place_id):
 
 @app_views.route('/reviews/<review_id>', methods=['GET'], strict_slashes=False)
 def r_review_id(review_id):
-    """ Retrieves a Review object """
+    """ Retrieves a single review object """
     review = storage.get("Review", review_id)
     if not review:
         abort(404)
@@ -29,7 +29,7 @@ def r_review_id(review_id):
 @app_views.route('/reviews/<review_id>', methods=['DELETE'],
                  strict_slashes=False)
 def del_review(review_id):
-    """ Deletes a Review object """
+    """ Delete review object """
     review = storage.get("Review", review_id)
     if not review:
         abort(404)
@@ -41,7 +41,7 @@ def del_review(review_id):
 @app_views.route('/places/<place_id>/reviews', methods=['POST'],
                  strict_slashes=False)
 def post_review(place_id):
-    """ Creates a Review object """
+    """ Creates review object """
     place = storage.get("Place", place_id)
     if not place:
         abort(404)
@@ -65,7 +65,7 @@ def post_review(place_id):
 @app_views.route('/reviews/<review_id>', methods=['PUT'],
                  strict_slashes=False)
 def put_review(review_id):
-    """ Updates a Review object """
+    """ Updates review object """
     review = storage.get("Review", review_id)
     if not review:
         abort(404)

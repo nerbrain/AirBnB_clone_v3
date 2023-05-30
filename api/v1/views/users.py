@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" View for User objects that handles default API actions """
+""" View for User objects  """
 from api.v1.views import app_views
 from flask import jsonify, abort, make_response, request
 from models import storage
@@ -9,7 +9,7 @@ import hashlib
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 def users():
-    """ Retrieves the list of all User objects """
+    """ Retrieves all User objects """
     d_users = storage.all(User)
     return jsonify([obj.to_dict() for obj in d_users.values()])
 
@@ -28,7 +28,7 @@ def r_user_id(user_id):
 @app_views.route('/users/<user_id>', methods=['DELETE'],
                  strict_slashes=False)
 def del_user(user_id):
-    """ Deletes a User object """
+    """ Delete User object """
     user = storage.get("User", user_id)
     if not user:
         abort(404)
@@ -39,7 +39,7 @@ def del_user(user_id):
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def post_user():
-    """ Creates a User object """
+    """ Creates User object """
     new_user = request.get_json()
     if not new_user:
         abort(400, "Not a JSON")
@@ -56,7 +56,7 @@ def post_user():
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def put_user(user_id):
-    """ Updates a User object """
+    """ Update User object """
     user = storage.get("User", user_id)
     if not user:
         abort(404)

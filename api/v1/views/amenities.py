@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" View for Amenity objects that handles default API actions """
+""" View for Amenity objects """
 from api.v1.views import app_views
 from flask import jsonify, abort, make_response, request
 from models import storage
@@ -8,7 +8,7 @@ from models.amenity import Amenity
 
 @app_views.route('/amenities', methods=['GET'], strict_slashes=False)
 def amenities():
-    """ Retrieves the list of all Amenity objects """
+    """ Retrieves all amenity objects """
     d_amenities = storage.all(Amenity)
     return jsonify([obj.to_dict() for obj in d_amenities.values()])
 
@@ -16,7 +16,7 @@ def amenities():
 @app_views.route('/amenities/<amenity_id>', methods=['GET'],
                  strict_slashes=False)
 def r_amenity_id(amenity_id):
-    """ Retrieves Amenity object """
+    """ Retrieves single amenity object """
     amenity = storage.get("Amenity", amenity_id)
     if not amenity:
         abort(404)
