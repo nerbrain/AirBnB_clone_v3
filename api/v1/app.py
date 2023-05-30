@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" Script that imports a Blueprint and runs Flask """
+""" 
+Script that imports a Blueprint and runs Flask 
+"""
 from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from models import storage
@@ -42,7 +44,7 @@ def not_found(error):
     """ Returns JSON response with 404 status """
     return make_response(jsonify({"error": "Not found"}), 404)
 
-
+""" run some stuff here """
 if __name__ == '__main__':
     HBNB_API_HOST = getenv('HBNB_API_HOST')
     HBNB_API_PORT = getenv('HBNB_API_PORT')
