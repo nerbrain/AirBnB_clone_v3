@@ -44,8 +44,9 @@ def not_found(error):
     """ Returns JSON response with 404 status """
     return make_response(jsonify({"error": "Not found"}), 404)
 
-""" run some stuff here """
+
 if __name__ == '__main__':
+    """ main app stuff """
     HBNB_API_HOST = getenv('HBNB_API_HOST')
     HBNB_API_PORT = getenv('HBNB_API_PORT')
 
