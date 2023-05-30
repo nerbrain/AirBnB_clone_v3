@@ -128,3 +128,4 @@ class TestFileStorage(unittest.TestCase):
         storage = FileStorage()
         nobjs = len(storage._FileStorage__objects)
         self.assertEqual(nobjs, storage.count())
+

@@ -97,3 +97,4 @@ class TestFileStorage(unittest.TestCase):
     def test_count(self):
         """Test that count properly counts all objects"""
         self.assertEqual(len(models.storage.all()), models.storage.count())
+
